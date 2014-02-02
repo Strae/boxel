@@ -1,29 +1,4 @@
 /**
- *      Created in 29/01/2014 20.23
- *
- *
- * @author Daniele Pignedoli <daniele.pignedoli@gmail.com>
- *
- * @license <a href="http://www.gnu.org/licenses/gpl.html" target="_new">
- *      http://www.gnu.org/licenses/gpl.html</a><br /><br />
- *      This program is free software; you can redistribute it and/or modify<br />
- *      it under the terms of the GNU General Public License as published by<br />
- *      the Free Software Foundation; either version 2 of the License, or<br />
- *      (at your option) any later version<br />
- *      <br />
- *      This program is distributed in the hope that it will be useful,<br />
- *      but WITHOUT ANY WARRANTY; without even the implied warranty of<br />
- *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br />
- *      GNU General Public License for more details:<br />
- *      <b>http://www.gnu.org/licenses/gpl.html</b><br />
- *      <br />
- *      You should have received a copy of the GNU General Public License<br />
- *      along with this program; if not, write to the Free Software<br />
- *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,<br />
- *      MA 02110-1301, USA<br />
- * */
-
-/**
  * Apply the boxel effect to an element.
  * @param array options
  * @param integer options.height Height of the boxel element.
@@ -75,49 +50,49 @@ jQuery.fn.boxel = function (options) {
       if (jQuery(handle).prev().hasClass('boxel-closed')) {
         // Open, check for the callback, assume true
         var open = true;
-        if(typeof settings.before === 'function'){
+        if (typeof settings.before === 'function') {
           var open = settings.before('open', boxel);
         }
-        if(open){
+        if (open) {
           jQuery(inner)
             .addClass('boxel-processing boxel-opening')
             .animate(
-              {'height': size[1] + (handleSize[1] * 3)},
-              settings.speed,
-              settings.easing,
-              function () {
-                jQuery(this)
-                  .addClass('boxel-open')
-                  .removeClass('boxel-processing boxel-opening boxel-closed');
-                handle.css({ bottom: 0 }).find('span').html(settings.labelClose);
-              }
-            );
+            {'height': size[1] + (handleSize[1] * 3)},
+            settings.speed,
+            settings.easing,
+            function () {
+              jQuery(this)
+                .addClass('boxel-open')
+                .removeClass('boxel-processing boxel-opening boxel-closed');
+              handle.css({ bottom: 0 }).find('span').html(settings.labelClose);
+            }
+          );
           handle.animate({ bottom: 0 }, 'slow');
-          if(typeof settings.after === 'function'){
+          if (typeof settings.after === 'function') {
             settings.after('open', boxel);
           }
         }
       } else {
         // close
         var close = true;
-        if(typeof settings.before === 'function'){
-          var close = settings.before('close', boxel);
+        if (typeof settings.before === 'function') {
+          close = settings.before('close', boxel);
         }
 
-        if(close){
+        if (close) {
           jQuery(inner)
             .addClass('boxel-processing boxel-closing')
             .animate(
-              {'height': finalHeight},
-              settings.speed,
-              settings.easing,
-              function () {
-                jQuery(this)
-                  .addClass('boxel-closed')
-                  .removeClass('boxel-processing boxel-closing boxel-open');
-                handle.css({ bottom: handleBottom }).find('span').html(settings.labelOpen);
-              }
-            );
+            {'height': finalHeight},
+            settings.speed,
+            settings.easing,
+            function () {
+              jQuery(this)
+                .addClass('boxel-closed')
+                .removeClass('boxel-processing boxel-closing boxel-open');
+              handle.css({ bottom: handleBottom }).find('span').html(settings.labelOpen);
+            }
+          );
 
           handle.animate({ bottom: handleBottom}, settings.speed, settings.easing);
 
@@ -126,7 +101,7 @@ jQuery.fn.boxel = function (options) {
             settings.speed,
             settings.easing
           );
-          if(typeof settings.after === 'function'){
+          if (typeof settings.after === 'function') {
             settings.after('close', boxel);
           }
         }

@@ -22,6 +22,7 @@
 
 .boxel .boxel-handle span {
   text-align: right;
+  font-family: 'Walter Turncoat', Verdana, Helvetica, Arial, sans-serif;
   font-weight: bold;
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.56);
